@@ -3,6 +3,7 @@ var router = express.Router();
 
 var chatHistory = [];
 var nicknames = [];
+var chatrooms = [];
 
 // Add headers
 router.use(function (req, res, next) {
@@ -34,7 +35,7 @@ router.post('/history', function (req, res, next) {
   var date = new Date();
 
   console.log(req.body);
-  chatHistory.push({ message: req.body.message, nickname: req.body.nickname, date: date });
+  chatHistory.push({ message: req.body.message, nickname: req.body.nickname, date: date, chatroom: req.body.chatroom });
 
   res.json({ message: 'History created!' });
 });
@@ -57,6 +58,14 @@ router.post('/nicknames', function (req, res, next) {
   nicknames.push({ username: req.body.username, id: nicknames.length + 1 });
 
   res.json({ username: req.body.username });
+});
+
+router.get('/chatrooms', function(req, res, next){
+  res.send(chatrooms);
+});
+
+router.post('/chatrooms', function(req, res, next){
+  chatrooms.push(req.body.chatroom);
 });
 
 module.exports = router;
