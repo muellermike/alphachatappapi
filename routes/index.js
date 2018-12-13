@@ -28,7 +28,15 @@ router.get('/', function(req, res, next) {
 
 // history
 router.get('/history', function (req, res, next) {
-  res.send(chatHistory);
+  var history = [];
+  var chatroom = req.query.chatroom;
+  chatHistory.forEach(element => {
+    console.log(element.chatroom);
+    if(element.chatroom === chatroom){
+      history.push(element);
+    }
+  });
+  res.send(history);
 });
 
 router.post('/history', function (req, res, next) {
@@ -66,6 +74,8 @@ router.get('/chatrooms', function(req, res, next){
 
 router.post('/chatrooms', function(req, res, next){
   chatrooms.push(req.body.chatroom);
+
+  res.json({ chatroom: req.body.chatroom});
 });
 
 module.exports = router;
