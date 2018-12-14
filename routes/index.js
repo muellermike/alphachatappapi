@@ -73,6 +73,7 @@ router.get('/chatrooms', function(req, res, next){
 });
 
 router.post('/chatrooms', function(req, res, next){
+  console.log(req.body.chatroom);
   chatrooms.push(req.body.chatroom);
 
   res.json({ chatroom: req.body.chatroom});
