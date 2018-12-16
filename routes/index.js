@@ -4,6 +4,7 @@ var router = express.Router();
 var chatHistory = [];
 var nicknames = [];
 var chatrooms = [];
+var blacklistRegex = /(arschloch|wixer|wixxer|hurensohn|penis|neger)/gi;
 
 // Add headers
 router.use(function (req, res, next) {
@@ -43,7 +44,9 @@ router.post('/history', function (req, res, next) {
   var date = new Date();
 
   console.log(req.body);
-  chatHistory.push({ message: req.body.message, nickname: req.body.nickname, date: date, chatroom: req.body.chatroom });
+  var msg = req.body.message;
+  msg = msg.replace(blacklistRegex, '***');
+  chatHistory.push({ message: msg, nickname: req.body.nickname, date: date, chatroom: req.body.chatroom });
 
   res.json({ message: 'History created!' });
 });
