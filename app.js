@@ -40,8 +40,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// app.listen(2000, function () {
-//   console.log('Node app is running on port', 2000);
-// });
+app.listen(2000, function () {
+  console.log('Node app is running on port', 2000);
+});
 
 module.exports = app;

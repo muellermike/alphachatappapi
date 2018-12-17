@@ -3,7 +3,7 @@ var router = express.Router();
 
 var chatHistory = [];
 var chatrooms = ['Allgemeines'];
-var blacklistRegex = /(arschloch|wixer|wixxer|hurensohn|penis|neger|scheisse|shit|asshole)/gi;
+var blacklistRegex = /(arschloch|wixer|wixxer|hurensohn|penis|neger|scheisse|scheiss|shit|asshole)/gi;
 
 // Add headers
 router.use(function (req, res, next) {
