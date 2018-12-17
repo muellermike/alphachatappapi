@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var chatHistory = [];
-var chatrooms = [];
+var chatrooms = ['Allgemeines'];
 var blacklistRegex = /(arschloch|wixer|wixxer|hurensohn|penis|neger|scheisse|shit|asshole)/gi;
 
 // Add headers
